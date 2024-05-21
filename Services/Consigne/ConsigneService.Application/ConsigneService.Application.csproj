@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Queries\Positions\**" />
+    <EmbeddedResource Remove="Queries\Positions\**" />
+    <None Remove="Queries\Positions\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MediatR" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsigneService.Domain\ConsigneService.Domain.csproj" />
+    <ProjectReference Include="..\ConsigneService.Infrastructure\ConsigneService.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+</Project>
