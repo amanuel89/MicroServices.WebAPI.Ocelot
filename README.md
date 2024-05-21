@@ -1,4 +1,4 @@
-# GetNet Project Starter
+# Getnet Project
 
 This repository contains a .NET Core Web API microservice implementing a Clean Architecture. This README provides an overview of the project, coding standards, variable naming rules, and best practices for maintaining a clean and maintainable codebase.
 
