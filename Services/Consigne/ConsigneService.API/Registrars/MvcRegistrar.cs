@@ -1,4 +1,9 @@
-﻿
+﻿using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
+using ConsigneService.Application.Models.Contracts.Common;
+using System.Text.Json.Serialization;
 
 using ConsigneService.Application.Models.Contracts.Common;
 
@@ -40,9 +45,7 @@ namespace ConsigneService.API.Registrars
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   policy =>
                                   {
-                                      policy.WithOrigins("localhost:3000",
-                                                          "*.evisa.gov.et",
-                                                          "evisa.gov.et")
+                                      policy.WithOrigins("localhost:3000")
                                                           .AllowAnyHeader()
                                                           .AllowAnyMethod()
                                                           .AllowAnyOrigin();
@@ -50,6 +53,25 @@ namespace ConsigneService.API.Registrars
             });
             builder.Services.BuildServiceProvider();
             builder.Services.AddEndpointsApiExplorer();
+
+            builder.Services.AddOpenTelemetry()
+               .WithTracing(builder =>
+               {
+                   builder
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneService"))
+                       .AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation()
+                       .AddConsoleExporter()
+                       .AddJaegerExporter();
+               })
+               .WithMetrics(builder =>
+               {
+                   builder
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneService"))
+                       .AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation()
+                       .AddPrometheusExporter();
+               });
         }
     }
 }
