@@ -1,4 +1,6 @@
-﻿namespace ConsigneService.API.Registrars
+﻿using Prometheus;
+
+namespace ConsigneService.API.Registrars
 {
     public class MvcWebAppRegistrar : IWebApplicationRegistrar
     {
@@ -33,9 +35,13 @@
             app.MapGet("/", () => "PMS Target Evaluation Service - API");
             app.UseHttpsRedirection();
             app.UseAuthorization();
+         
             app.MapControllers();
             app.MigrateDatabase();
+            app.UseMetricsEndpoint();
             app.UseOpenTelemetryPrometheusScrapingEndpoint();
+            app.MapMetrics();
+
         }
     }
 }

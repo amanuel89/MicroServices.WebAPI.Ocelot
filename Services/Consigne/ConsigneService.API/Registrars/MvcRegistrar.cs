@@ -6,6 +6,10 @@ using ConsigneService.Application.Models.Contracts.Common;
 using System.Text.Json.Serialization;
 
 using ConsigneService.Application.Models.Contracts.Common;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using App.Metrics.Formatters.Json;
+using System.Diagnostics.Tracing;
+using Prometheus;
 
 namespace ConsigneService.API.Registrars
 {
@@ -54,6 +58,11 @@ namespace ConsigneService.API.Registrars
             builder.Services.BuildServiceProvider();
             builder.Services.AddEndpointsApiExplorer();
 
+            builder.Services.Configure<KestrelServerOptions>(Options =>
+            {
+                Options.AllowSynchronousIO = true;
+            });
+            //builder.Services.AddMetrics();
             builder.Services.AddOpenTelemetry()
                .WithTracing(builder =>
                {
@@ -70,8 +79,40 @@ namespace ConsigneService.API.Registrars
                        .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneService"))
                        .AddAspNetCoreInstrumentation()
                        .AddHttpClientInstrumentation()
+                        .AddRuntimeInstrumentation()
                        .AddPrometheusExporter();
                });
+            var kestrelCounterListener = new KestrelEventListener();
         }
+    }
+
+    public class KestrelEventListener : EventListener
+    {
+        private readonly Dictionary<string, Gauge> _gauges = new Dictionary<string, Gauge>();
+
+        protected override void OnEventSourceCreated(EventSource eventSource)
+        {
+            if (eventSource.Name == "Microsoft-AspNetCore-Server-Kestrel")
+            {
+                EnableEvents(eventSource, EventLevel.Verbose, EventKeywords.All);
+            }
+        }
+
+        protected override void OnEventWritten(EventWrittenEventArgs eventData)
+        {
+            if (eventData.EventName == "EventCounters")
+            {
+                var payload = eventData.Payload[0] as IDictionary<string, object>;
+                var name = payload["Name"] as string;
+                var value = (double)payload["Mean"];
+
+                if (!_gauges.ContainsKey(name))
+                {
+                    _gauges[name] = Metrics.CreateGauge(name, "Kestrel metric");
+                }
+
+                _gauges[name].Set(value);
+            }
+        } 
     }
 }

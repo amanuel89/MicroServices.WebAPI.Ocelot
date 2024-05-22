@@ -1,7 +1,17 @@
-﻿global:
+﻿
+global:
   scrape_interval: 2s
+  evaluation_interval: 2s 
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          
+rule_files:
 
 scrape_configs:
-  - job_name: 'dotnet-microservices'
+  - job_name: "consigne_api"
     static_configs:
-      - targets: ['localhost:9184']
+      - targets: ["localhost:5248"]
+    metrics_path: /metrics-text
