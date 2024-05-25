@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SmallServices", "SmallServices", "{2799945D-B0C6-4C5F-BB4D-47C1A4470AE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product.MicroService", "Product.MicroService\Product.MicroService.csproj", "{FDABB090-66B9-4924-B596-7EC586711623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product.MicroService", "Product.MicroService\Product.MicroService.csproj", "{FDABB090-66B9-4924-B596-7EC586711623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customer.MicroService", "Customer.MicroService\Customer.MicroService.csproj", "{0D547F65-8E17-46A3-A422-BEAA57E64B51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customer.MicroService", "Customer.MicroService\Customer.MicroService.csproj", "{0D547F65-8E17-46A3-A422-BEAA57E64B51}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GateWay.WebAPI", "GateWay.WebAPI\GateWay.WebAPI.csproj", "{75120CFF-9A60-4394-9351-ED6F790520E1}"
 EndProject
@@ -24,6 +24,16 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsigneService.Application", "Services\Consigne\ConsigneService.Application\ConsigneService.Application.csproj", "{604E7877-4E3B-4378-AF6E-F134B9B97A17}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsigneService.API", "Services\Consigne\ConsigneService.API\ConsigneService.API.csproj", "{618C3079-3F4C-485F-8DE0-12371DBAE8BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CommonService", "CommonService", "{FEF92A56-372F-4A60-B048-0E2F2D59EBD6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Infrastructure", "Services\Common.Infrastructure\Common.Infrastructure.csproj", "{48B7E377-13B0-4FA9-8D35-30993DD7CCC9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Domain", "Services\Common.Domain\Common.Domain.csproj", "{9CA0D669-DCA7-41D4-8126-DE30B89261EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Application", "Services\Common.Application\Common.Application.csproj", "{E4574374-9A0D-433D-B098-E12E90C66DE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.API", "Services\Common.API\Common.API.csproj", "{73F11A61-D49F-4189-B5BD-4DA79B0FF418}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +73,22 @@ Global
 		{618C3079-3F4C-485F-8DE0-12371DBAE8BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{618C3079-3F4C-485F-8DE0-12371DBAE8BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{618C3079-3F4C-485F-8DE0-12371DBAE8BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B7E377-13B0-4FA9-8D35-30993DD7CCC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B7E377-13B0-4FA9-8D35-30993DD7CCC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B7E377-13B0-4FA9-8D35-30993DD7CCC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B7E377-13B0-4FA9-8D35-30993DD7CCC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CA0D669-DCA7-41D4-8126-DE30B89261EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CA0D669-DCA7-41D4-8126-DE30B89261EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CA0D669-DCA7-41D4-8126-DE30B89261EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CA0D669-DCA7-41D4-8126-DE30B89261EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4574374-9A0D-433D-B098-E12E90C66DE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4574374-9A0D-433D-B098-E12E90C66DE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4574374-9A0D-433D-B098-E12E90C66DE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4574374-9A0D-433D-B098-E12E90C66DE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F11A61-D49F-4189-B5BD-4DA79B0FF418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F11A61-D49F-4189-B5BD-4DA79B0FF418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F11A61-D49F-4189-B5BD-4DA79B0FF418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F11A61-D49F-4189-B5BD-4DA79B0FF418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,6 +101,11 @@ Global
 		{7D138933-B569-4508-8F9C-054A3351BE54} = {919875E5-2533-444C-BDAD-201824AD9171}
 		{604E7877-4E3B-4378-AF6E-F134B9B97A17} = {919875E5-2533-444C-BDAD-201824AD9171}
 		{618C3079-3F4C-485F-8DE0-12371DBAE8BD} = {919875E5-2533-444C-BDAD-201824AD9171}
+		{FEF92A56-372F-4A60-B048-0E2F2D59EBD6} = {186D823B-EB6E-43BE-9351-9940D182E0A3}
+		{48B7E377-13B0-4FA9-8D35-30993DD7CCC9} = {FEF92A56-372F-4A60-B048-0E2F2D59EBD6}
+		{9CA0D669-DCA7-41D4-8126-DE30B89261EA} = {FEF92A56-372F-4A60-B048-0E2F2D59EBD6}
+		{E4574374-9A0D-433D-B098-E12E90C66DE2} = {FEF92A56-372F-4A60-B048-0E2F2D59EBD6}
+		{73F11A61-D49F-4189-B5BD-4DA79B0FF418} = {FEF92A56-372F-4A60-B048-0E2F2D59EBD6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {60FA1940-C0E2-4F6A-810C-062EEF97CCA6}
