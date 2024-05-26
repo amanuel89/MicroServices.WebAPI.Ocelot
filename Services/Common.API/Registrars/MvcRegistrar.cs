@@ -6,7 +6,15 @@ using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Hosting;
 using RideBackend.Infrastructure.Configurations;
 using Quartz;
-
+using System.Diagnostics.Tracing;
+using Microsoft.Extensions.DependencyInjection;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
+using App.Metrics.Formatters.Json;
+using Prometheus;
 namespace RideBackend.API.Registrars
 {
     public class MvcRegistrar : IWebApplicationBuilderRegistrar
@@ -72,7 +80,65 @@ namespace RideBackend.API.Registrars
             //}));
             builder.Services.AddSignalR();
             builder.Services.AddHangfireServer();
-        
+            builder.Services.Configure<KestrelServerOptions>(Options =>
+            {
+                Options.AllowSynchronousIO = true;
+            });
+            //builder.Services.AddMetrics();
+            builder.Services.AddOpenTelemetry()
+               .WithTracing(builder =>
+               {
+                   builder
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneService"))
+                       .AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation()
+                       .AddJaegerExporter();
+               })
+               .WithMetrics(builder =>
+               {
+                   builder
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneService"))
+                       .AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation()
+                        .AddRuntimeInstrumentation()
+                       .AddPrometheusExporter();
+               });
+            var kestrelCounterListener = new KestrelEventListener();
+
+        }
+    }
+
+    public class KestrelEventListener : EventListener
+    {
+        private readonly Dictionary<string, Gauge> _gauges = new Dictionary<string, Gauge>();
+
+        protected override void OnEventSourceCreated(EventSource eventSource)
+        {
+            if (eventSource.Name == "Microsoft-AspNetCore-Server-Kestrel")
+            {
+                EnableEvents(eventSource, EventLevel.Verbose, EventKeywords.All);
+            }
+        }
+
+        protected override void OnEventWritten(EventWrittenEventArgs eventData)
+        {
+            if (eventData.EventName == "EventCounters")
+            {
+                var payload = eventData.Payload[0] as IDictionary<string, object>;
+                var name = payload["Name"] as string;
+                var value = payload.ContainsKey("Mean") ? (double)payload["Mean"] : 0;
+
+                // Adjust the metric name to match the required regex pattern
+                var adjustedName = name.Replace("-", "_");
+
+                if (!_gauges.ContainsKey(adjustedName))
+                {
+                    _gauges[adjustedName] = Metrics.CreateGauge(adjustedName, "Kestrel metric");
+                }
+
+                _gauges[adjustedName].Set(value);
+
+            }
         }
     }
 }
