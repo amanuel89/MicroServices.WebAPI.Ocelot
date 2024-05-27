@@ -2,7 +2,7 @@
 
 
 //using Dapper;
-//using RideBackend.Domain.Common;
+//using CommonService.Domain.Common;
 //using System.Data;
 //using System.Data.Common;
 //using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;

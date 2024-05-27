@@ -1,9 +1,9 @@
-﻿//using RideBackend.Application.Models;
-//using RideBackend.Application.Services.ServiceIntegration;
-//using RideBackend.Domain.Models;
-//using RideBackend.Infrastructure.Configurations;
+﻿//using CommonService.Application.Models;
+//using CommonService.Application.Services.ServiceIntegration;
+//using CommonService.Domain.Models;
+//using CommonService.Infrastructure.Configurations;
 
-//namespace RideBackend.Application.Commands;
+//namespace CommonService.Application.Commands;
 //public class AuthorizePayement : IRequest<OperationResult<PaymentConfirmationResponseDto>>
 //{
 //    public string OrderCode { get; set; }

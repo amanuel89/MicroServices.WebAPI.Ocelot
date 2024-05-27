@@ -1,4 +1,4 @@
-﻿using RideBackend.Application.Services.UnitOfWork;
+﻿using CommonService.Application.Services.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace RideBackend.Application.Services.UnitOfWork
+namespace CommonService.Application.Services.UnitOfWork
 {
 
     public class UnitOfWork : IUnitOfWork

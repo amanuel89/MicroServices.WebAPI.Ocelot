@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Infrastructure.HttpService.Models
+﻿namespace CommonService.Infrastructure.HttpService.Models
 {
     public class ApiRequest
     {

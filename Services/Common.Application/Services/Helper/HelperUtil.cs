@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Application.Services.Helper;
+﻿namespace CommonService.Application.Services.Helper;
 public static class HelperUtil
 {
     private static readonly Random random = new Random();

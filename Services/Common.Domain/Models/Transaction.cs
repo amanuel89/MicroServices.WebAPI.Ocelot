@@ -1,6 +1,6 @@
-﻿using RideBackend.Domain.Common;
+﻿using CommonService.Domain.Common;
 
-namespace RideBackend.Domain.Models
+namespace CommonService.Domain.Models
 {
     public class Transaction : BaseEntity
     {

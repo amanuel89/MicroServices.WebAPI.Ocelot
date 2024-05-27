@@ -1,11 +1,11 @@
-﻿using RideBackend.Domain.Models;
+﻿using CommonService.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RideBackend.Application.Services.UnitOfWork
+namespace CommonService.Application.Services.UnitOfWork
 { 
     public interface IUnitOfWork : IDisposable
     {      

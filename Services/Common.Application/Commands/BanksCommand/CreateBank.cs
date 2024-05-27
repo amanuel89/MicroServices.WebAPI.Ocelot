@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using RideBackend.Application.Services.Helper;
-using RideBackend.Domain.Models;
+using Common.Application.Models.Common;
+using CommonService.Application.Services.Helper;
+using CommonService.Domain.Models;
 
-namespace RideBackend.Application.Commands;
+namespace CommonService.Application.Commands;
 public class CreateBanks : IRequest<OperationResult<BankResponseDTO>>
 {
     public BankRequestDTO Bank { get;  set; }
@@ -12,7 +13,7 @@ public class CreateBanksHandler : IRequestHandler<CreateBanks, OperationResult<B
     private readonly IRepositoryBase<Bank> _Banks;
     private readonly IMapper  _mapper;
     private readonly ImageUploader _imageUploader;
-    private readonly IRepositoryBase<VerificationCodes> _VerificationCodes;
+   // private readonly IRepositoryBase<VerificationCodes> _VerificationCodes;
     public CreateBanksHandler(IRepositoryBase<Bank> _Banks,IMapper imapper, ImageUploader imageUploader)
     {
         this._Banks = _Banks;

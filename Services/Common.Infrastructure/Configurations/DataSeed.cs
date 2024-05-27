@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Infrastructure.Configurations
+﻿namespace CommonService.Infrastructure.Configurations
 {
     public static class DataSeed
     {

@@ -1,4 +1,6 @@
-﻿namespace RideBackend.Application.Commands;
+﻿using Common.Application.Models.Common;
+
+namespace CommonService.Application.Commands;
 
 public class DeleteBanks : IRequest<OperationResult<Bank>>
 {

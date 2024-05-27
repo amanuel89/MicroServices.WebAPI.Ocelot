@@ -1,5 +1,5 @@
 ﻿
-namespace RideBackend.Application.Services.GenericRepository
+namespace CommonService.Application.Services.GenericRepository
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

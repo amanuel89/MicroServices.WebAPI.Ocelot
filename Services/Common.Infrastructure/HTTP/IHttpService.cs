@@ -1,5 +1,5 @@
 ﻿
-namespace RideBackend.Infrastructure.HttpServices
+namespace CommonService.Infrastructure.HttpServices
 {
     public interface IHttpService : IDisposable
     {

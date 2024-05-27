@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Application.Models
+﻿namespace CommonService.Application.Models
 {
 
     public class RideResponseDto

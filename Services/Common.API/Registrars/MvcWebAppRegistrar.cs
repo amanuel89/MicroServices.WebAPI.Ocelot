@@ -1,8 +1,8 @@
 ﻿using Asp.Versioning.ApiExplorer;
 using Hangfire;
-using RideBackend.API;
+using CommonService.API;
 
-namespace RideBackend.API.Registrars
+namespace CommonService.API.Registrars
 {
     public class MvcWebAppRegistrar : IWebApplicationRegistrar
     {
@@ -37,18 +37,12 @@ namespace RideBackend.API.Registrars
                   }
             );
             
-            app.MapGet("/", () => "GetNet Ride - API");
+            app.MapGet("/", () => "GetNet Cloud SAAS Common Service  - API");
             app.UseHttpsRedirection();
             app.UseAuthorization();
 
             app.MapControllers();
-
-            app.MapHub<SignalrHub>("/hub");
-            app.MapHub<RideHub>("/ridehub");
-            app.MapHub<SignalrHub>("/UpdateDriverLocation");
-            app.MapHub<RideHub>("/SendMessageToDriver");
-            
-            app.UseHangfireDashboard("/getnet-hangfire-dashboard");
+            app.UseHangfireDashboard("/getnet-common-hangfire-dashboard");
 
             app.MigrateDatabase();
         }

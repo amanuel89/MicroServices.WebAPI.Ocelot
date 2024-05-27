@@ -2,12 +2,13 @@
 using FirebaseAdmin.Messaging;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
-using RideBackend.Domain.Models;
-using RideBackend.Infrastructure.HttpService.Models;
-using ErrorCode = RideBackend.Application.Models.ErrorCode;
+using CommonService.Domain.Models;
+using CommonService.Infrastructure.HttpService.Models;
+using ErrorCode = Common.Application.Models.Common.ErrorCode;
 using Google.Type;
+using Common.Application.Models.Common;
 
-namespace RideBackend.Application.Queries
+namespace CommonService.Application.Queries
 {
     public class GetBank : IRequest<OperationResult<BankResponseDTO>>
     {

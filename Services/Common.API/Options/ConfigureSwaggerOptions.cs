@@ -2,7 +2,7 @@
 
 using Asp.Versioning.ApiExplorer;
 
-namespace RideBackend.API.Options
+namespace CommonService.API.Options
 {
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {
@@ -24,7 +24,7 @@ namespace RideBackend.API.Options
         {
             var info = new OpenApiInfo
             {
-                Title = "GETNET RIDE API",
+                Title = "GETNET CLOUD COMMON SERVICE API",
                 Version = description.ApiVersion.ToString(),
                 
             };

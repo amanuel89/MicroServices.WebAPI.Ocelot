@@ -1,5 +1,4 @@
-﻿using RideBackend.Application.Models;
-using RideBackend.Infrastructure.HttpService.Models;
+﻿using CommonService.Infrastructure.HttpService.Models;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
@@ -8,11 +7,12 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
-using RideBackend.Infrastructure.Configurations;
-using RideBackend.Infrastructure.HttpServices;
-using static RideBackend.Application.Services.ServiceIntegration.IdentityService;
+using CommonService.Infrastructure.Configurations;
+using CommonService.Infrastructure.HttpServices;
+using static CommonService.Application.Services.ServiceIntegration.IdentityService;
+using Common.Application.Models.Common;
 
-namespace RideBackend.Application.Services.ServiceIntegration
+namespace CommonService.Application.Services.ServiceIntegration
 {
     public interface IIdentityService
     {

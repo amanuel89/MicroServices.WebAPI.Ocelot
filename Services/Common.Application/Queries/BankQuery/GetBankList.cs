@@ -1,8 +1,9 @@
-﻿using RideBackend.Domain.Models;
+﻿using CommonService.Domain.Models;
 using Microsoft.AspNetCore.Http;
 using AutoMapper;
+using Common.Application.Models.Common;
 
-namespace RideBackend.Application.Queries
+namespace CommonService.Application.Queries
 {
     public class GetBankList : IRequest<OperationResult<PagedResponse<IEnumerable<BankResponseDTO>>>>
     {

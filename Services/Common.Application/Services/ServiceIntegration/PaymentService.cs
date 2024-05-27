@@ -1,11 +1,11 @@
-﻿using RideBackend.Application.Models;
-using RideBackend.Infrastructure.HttpService.Models;
+﻿using CommonService.Application.Models;
+using CommonService.Infrastructure.HttpService.Models;
 using Microsoft.Extensions.Options;
-using RideBackend.Infrastructure.Configurations;
-using RideBackend.Infrastructure.HttpServices;
-using static RideBackend.Application.Services.ServiceIntegration.PaymentService;
+using CommonService.Infrastructure.Configurations;
+using CommonService.Infrastructure.HttpServices;
+using static CommonService.Application.Services.ServiceIntegration.PaymentService;
 
-namespace RideBackend.Application.Services.ServiceIntegration
+namespace CommonService.Application.Services.ServiceIntegration
 {
     public interface IPaymentService
     {

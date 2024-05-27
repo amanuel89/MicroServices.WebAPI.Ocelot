@@ -1,4 +1,4 @@
-namespace RideBackend.Infrastructure.Configurations;
+namespace CommonService.Infrastructure.Configurations;
 public static class BaseUrl
 {
     public static string Identity() => Environment.GetEnvironmentVariable("Identity_URL") ?? "https://identityapi.getnetsoft.com/";

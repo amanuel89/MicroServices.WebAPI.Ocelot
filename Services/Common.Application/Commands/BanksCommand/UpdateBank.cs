@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using RideBackend.Domain.Models;
+using Common.Application.Models.Common;
+using CommonService.Domain.Models;
 
-namespace RideBackend.Application.Commands;
+namespace CommonService.Application.Commands;
 
 public class UpdateBank : IRequest<OperationResult<BankResponseDTO>>
 {

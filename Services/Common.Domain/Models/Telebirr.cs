@@ -1,7 +1,7 @@
-﻿using RideBackend.Domain.Common;
+﻿using CommonService.Domain.Common;
 using System;
 
-namespace RideBackend.Domain.Models
+namespace CommonService.Domain.Models
 {
     public class Telebirr : BaseEntity
     {

@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Application.Services.GenericRepository;
+﻿namespace CommonService.Application.Services.GenericRepository;
 
 public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
 {

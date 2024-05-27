@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Domain.Common;
+﻿namespace CommonService.Domain.Common;
 public class NotValidException : Exception
 {
     internal NotValidException()

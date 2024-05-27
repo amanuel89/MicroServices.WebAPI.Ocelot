@@ -1,8 +1,9 @@
-﻿using RideBackend.Application.Services.ServiceIntegration;
+﻿using CommonService.Application.Services.ServiceIntegration;
 using Microsoft.AspNetCore.Http;
 using MediatR;
+using Common.Application.Models.Common;
 
-namespace RideBackend.Application.Queries
+namespace CommonService.Application.Queries
 {
     public class GetPaymentMethods : IRequest<OperationResult<IEnumerable<TeleBirrPaymentOptionsDto>>>
     {

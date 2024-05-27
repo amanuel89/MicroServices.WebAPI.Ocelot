@@ -6,7 +6,7 @@
 //using System.Linq.Expressions;
 //using System.Threading.Tasks;
 //using Dapper;
-//using RideBackend.Domain.Common;
+//using CommonService.Domain.Common;
 
 //public class DapperReadOnlyRepository<TEntity> : IDapperReadOnlyRepository<TEntity> where TEntity : class
 //{

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace RideBackend.API.Filters;
+namespace CommonService.API.Filters;
 public class AuthorizationHandler : IAuthorizationFilter
 {
     private readonly IIdentityService _identityService;
     private readonly IHttpContextAccessor _httpContextAccessor;
-    private static string _enviromentVariable = Environment.GetEnvironmentVariable("RideBackend");
+    private static string _enviromentVariable = Environment.GetEnvironmentVariable("CommonService");
     private static long _serviceId = string.IsNullOrEmpty(_enviromentVariable) ? 4 : Convert.ToInt64(_enviromentVariable);
     public AuthorizationHandler(IHttpContextAccessor httpContextAccessor, IIdentityService _identityService)
     {
@@ -62,6 +62,6 @@ public class AuthorizationHandler : IAuthorizationFilter
     public List<string> Anonymous = new List<string>
     {   
         "Payment-GetPaymentMethods",
-        "Actions-RideBackendClaimSeeder"
+        "Actions-CommonServiceClaimSeeder"
     };
 }

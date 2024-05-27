@@ -1,5 +1,5 @@
 ﻿
-namespace RideBackend.Domain.Models;
+namespace CommonService.Domain.Models;
 public class AuditEventLog
 {
     public long Id { get; set; }

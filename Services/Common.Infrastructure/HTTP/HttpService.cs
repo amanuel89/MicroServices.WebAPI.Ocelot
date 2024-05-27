@@ -1,11 +1,11 @@
-﻿using RideBackend.Infrastructure.HttpService.Models;
+﻿using CommonService.Infrastructure.HttpService.Models;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text;
 
-namespace RideBackend.Infrastructure.HttpServices
+namespace CommonService.Infrastructure.HttpServices
 {
     public class HttpService : IHttpService
     {

@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using RideBackend.Domain.Models;
+using CommonService.Domain.Models;
 
-namespace RideBackend.Domain.Validator
+namespace CommonService.Domain.Validator
 {
     public class BankValidator : AbstractValidator<Bank>
     {

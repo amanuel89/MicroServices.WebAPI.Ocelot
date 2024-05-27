@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace RideBackend.Application.Models
+namespace CommonService.Application.Models
 {
     public class BankRequestDTO
     {

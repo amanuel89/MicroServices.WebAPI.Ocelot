@@ -1,7 +1,7 @@
 
-using RideBackend.Domain.Models;
+using CommonService.Domain.Models;
 
-namespace RideBackend.Infrastructure.Context
+namespace CommonService.Infrastructure.Context
 {
     public class ApplicationDbContext : DbContext
     {
@@ -17,18 +17,8 @@ namespace RideBackend.Infrastructure.Context
 
             DataSeed.seed(modelBuilder);
         }
-        public DbSet<Address> Address { get; set; }
         public DbSet<Bank> Bank { get; set; }
-        public DbSet<Driver> Driver { get; set; }
-        public DbSet<Passenger> Passenger { get; set; }      
-        public DbSet<VerificationCodes> VerificationCodes { get; set; }
-        public DbSet<Staff> Staff { get; set; }
         public DbSet<Telebirr> Telebirr { get; set; }
         public DbSet<Transaction> Transaction { get; set; }
-        public DbSet<Vehicle> Vehicle { get; set; }
-        public DbSet<VehicleTypes> VehicleTypes { get; set; }
-        public DbSet<Ride> Rides { get; set; }
-        public DbSet<Tariff> Tariffs { get; set; }
-        public DbSet<RideSettings> RideSettings { get; set; }
     }
 }

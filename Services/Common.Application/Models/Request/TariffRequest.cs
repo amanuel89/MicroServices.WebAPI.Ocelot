@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace RideBackend.Domain.Dtos
+namespace CommonService.Domain.Dtos
 {
     public class TariffRequesDto : TariffUpdateRequesDto
     {

@@ -1,4 +1,4 @@
-﻿namespace RideBackend.Domain.Common;
+﻿namespace CommonService.Domain.Common;
 public enum RecordStatus
 {
     InActive = 1,

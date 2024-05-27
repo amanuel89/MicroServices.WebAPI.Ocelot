@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RideBackend.Domain.Common
+namespace CommonService.Domain.Common
 {
     public class BaseEntity
     {
