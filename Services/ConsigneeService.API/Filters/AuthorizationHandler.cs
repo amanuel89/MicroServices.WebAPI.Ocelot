@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace CommonService.API.Filters;
+namespace ConsigneeService.API.Filters;
 public class AuthorizationHandler : IAuthorizationFilter
 {
     private readonly IIdentityService _identityService;
@@ -62,6 +62,6 @@ public class AuthorizationHandler : IAuthorizationFilter
     public List<string> Anonymous = new List<string>
     {   
         "Payment-GetPaymentMethods",
-        "Actions-CommonServiceClaimSeeder"
+        "Actions-ConsigneeServiceClaimSeeder"
     };
 }

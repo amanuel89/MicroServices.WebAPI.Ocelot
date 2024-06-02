@@ -1,4 +1,4 @@
-﻿namespace CommonService.API.Registrars
+﻿namespace ConsigneeService.API.Registrars
 {
     public class ApplicationInsightsRegistrar : IWebApplicationBuilderRegistrar
     {

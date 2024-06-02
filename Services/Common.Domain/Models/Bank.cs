@@ -9,7 +9,7 @@ namespace CommonService.Domain.Models
         public string AccountName { get; private set; } = string.Empty;
         public string AccountNumber { get; private set; } = string.Empty;
         public string BankLogo { get; private set; } = string.Empty;
-        public virtual List<Transaction> Transaction { get; set; }
+      //  public virtual List<Transaction> Transaction { get; set; }
 
         // Private constructor to enforce object creation through factory method   
         public static Bank Create(string name, string accountName, string accountNumber, string bankLogo)

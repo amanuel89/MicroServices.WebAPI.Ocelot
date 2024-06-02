@@ -4,7 +4,6 @@ using Asp.Versioning;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Hosting;
-using CommonService.Infrastructure.Configurations;
 using Quartz;
 using System.Diagnostics.Tracing;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,7 +15,8 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using App.Metrics.Formatters.Json;
 using Prometheus;
 using Common.Application.Models.Common;
-namespace CommonService.API.Registrars
+using ConsigneeService.Infrastructure.Configurations;
+namespace ConsigneeService.API.Registrars
 {
     public class MvcRegistrar : IWebApplicationBuilderRegistrar
     {
@@ -90,7 +90,7 @@ namespace CommonService.API.Registrars
                .WithTracing(builder =>
                {
                    builder
-                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CommonService"))
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneeService"))
                        .AddAspNetCoreInstrumentation()
                        .AddHttpClientInstrumentation()
                        .AddJaegerExporter();
@@ -98,7 +98,7 @@ namespace CommonService.API.Registrars
                .WithMetrics(builder =>
                {
                    builder
-                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("CommonService"))
+                       .SetResourceBuilder(ResourceBuilder.CreateDefault().AddService("ConsigneeService"))
                        .AddAspNetCoreInstrumentation()
                        .AddHttpClientInstrumentation()
                         .AddRuntimeInstrumentation()

@@ -7,4 +7,9 @@
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.5.2" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Common\" />
+    <Folder Include="Models\Employee\" />
+    <Folder Include="Models\Security\" />
+  </ItemGroup>
 </Project>

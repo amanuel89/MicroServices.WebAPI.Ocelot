@@ -1,6 +1,6 @@
 ﻿
 
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public static class MigrationManager
     {

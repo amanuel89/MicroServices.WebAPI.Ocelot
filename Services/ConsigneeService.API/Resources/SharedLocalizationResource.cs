@@ -1,4 +1,4 @@
-﻿namespace CommonService.API.Resources
+﻿namespace ConsigneeService.API.Resources
 {
     public class SharedLocalizationResource
     {

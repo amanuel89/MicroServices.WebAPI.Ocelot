@@ -1,9 +1,9 @@
 ﻿//using Microsoft.Extensions.DependencyInjection;
 //using System.Data;
-//using CommonService.Domain.Models;
+//using ConsigneeService.Domain.Models;
 //using System.Data.SqlClient;
 
-//namespace CommonService.API.Registrars
+//namespace ConsigneeService.API.Registrars
 //{
 //    public class DbRegistrar : IWebApplicationBuilderRegistrar
 //    {
@@ -47,7 +47,7 @@
 //        }
 //    }
 //}
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public class DbRegistrar : IWebApplicationBuilderRegistrar
     {

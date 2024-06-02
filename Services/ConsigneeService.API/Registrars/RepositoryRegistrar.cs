@@ -1,9 +1,9 @@
 
 
 using Google.Api;
-using CommonService.Application.Services;
+using ConsigneeService.Application.Services;
 
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public class RepositoryRegistrar : IWebApplicationBuilderRegistrar
     {

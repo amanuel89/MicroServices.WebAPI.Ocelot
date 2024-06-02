@@ -24,7 +24,7 @@
         public DriverStatus DriverStatus { get; set; }
         public string VehicleType { get; set; } = string.Empty;
         public virtual List<VehicleResponseDTO> Vehicle { get; set; }
-        public virtual List<Transaction> Transaction { get; set; }
+        //public virtual List<Transaction> Transaction { get; set; }
         public RecordStatus RecordStatus { get; set; }
     }
 }

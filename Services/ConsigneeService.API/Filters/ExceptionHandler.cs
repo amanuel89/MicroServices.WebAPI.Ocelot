@@ -1,7 +1,7 @@
 ﻿using Common.Application.Models.Common;
-using CommonService.Api.Contracts.Common;
+using ConsigneeService.Api.Contracts.Common;
 
-namespace CommonService.API.Filters;
+namespace ConsigneeService.API.Filters;
 
 public class ExceptionHandler : ExceptionFilterAttribute
 {

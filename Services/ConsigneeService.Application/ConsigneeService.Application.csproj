@@ -26,7 +26,7 @@
     <PackageReference Include="Webilize.ImageSharp" Version="0.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
-    <ProjectReference Include="..\Common.Infrastructure\Common.Infrastructure.csproj" />
+    <ProjectReference Include="..\ConsigneeService.Domain\ConsigneeService.Domain.csproj" />
+    <ProjectReference Include="..\ConsigneeService.Infrastructure\ConsigneeService.Infrastructure.csproj" />
   </ItemGroup>
 </Project>

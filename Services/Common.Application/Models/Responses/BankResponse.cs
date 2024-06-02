@@ -9,6 +9,6 @@
         public string AccountNumber { get;  set; } = string.Empty;
         public string BankLogo { get; set; } = string.Empty; 
         public RecordStatus RecordStatus { get; set; }
-        public virtual List<Transaction> Transaction { get; set; }
+        //public virtual List<Transaction> Transaction { get; set; }
     }
 }

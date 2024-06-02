@@ -1,5 +1,5 @@
 ﻿
-namespace CommonService.API.Extensions
+namespace ConsigneeService.API.Extensions
 {
     public static class RegistrarExtensions
     {

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace CommonService.API.Registrars;
+namespace ConsigneeService.API.Registrars;
 public class LocalizationRegistrar : IWebApplicationBuilderRegistrar, IWebApplicationRegistrar
 {
     private readonly RequestLocalizationOptions localizationOptions = new RequestLocalizationOptions()

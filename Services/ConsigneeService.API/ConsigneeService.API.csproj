@@ -52,10 +52,10 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
+    <Folder Include="wwwroot\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <ProjectReference Include="..\ConsigneeService.Application\ConsigneeService.Application.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\SharedLocalizationResource.am.resx">

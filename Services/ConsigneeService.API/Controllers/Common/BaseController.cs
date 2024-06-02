@@ -1,10 +1,10 @@
-﻿using CommonService.API.Resources;
+﻿using ConsigneeService.API.Resources;
 using Microsoft.Extensions.Localization;
 using System.Buffers;
 using Asp.Versioning;
 using Common.Application.Models.Common;
 
-namespace CommonService.API.Controllers;
+namespace ConsigneeService.API.Controllers;
 [ApiVersion("1.0")]
 [Route("api/v{version:apiVersion}/[controller]")]
 [ApiController]

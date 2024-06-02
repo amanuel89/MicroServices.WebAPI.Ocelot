@@ -1,5 +1,5 @@
 ﻿
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public class SwaggerRegistrar : IWebApplicationBuilderRegistrar
     {

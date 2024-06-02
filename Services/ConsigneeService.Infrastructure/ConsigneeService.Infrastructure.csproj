@@ -23,6 +23,6 @@
     <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="..\ConsigneeService.Domain\ConsigneeService.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace CommonService.API.Controllers.V1._0;
+﻿namespace ConsigneeService.API.Controllers.V1._0;
 public class PaymentController : BaseController
 {
 

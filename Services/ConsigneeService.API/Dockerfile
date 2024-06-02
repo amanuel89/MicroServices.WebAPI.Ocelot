@@ -7,18 +7,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["src/CommonService.API/CommonService.API.csproj", "src/CommonService.API/"]
-COPY ["src/CommonService.Application/CommonService.Application.csproj", "src/CommonService.Application/"]
-COPY ["CommonService.Infrastructure/CommonService.Infrastructure.csproj", "CommonService.Infrastructure/"]
-RUN dotnet restore "src/CommonService.API/CommonService.API.csproj"
+COPY ["src/ConsigneeService.API/ConsigneeService.API.csproj", "src/ConsigneeService.API/"]
+COPY ["src/ConsigneeService.Application/ConsigneeService.Application.csproj", "src/ConsigneeService.Application/"]
+COPY ["ConsigneeService.Infrastructure/ConsigneeService.Infrastructure.csproj", "ConsigneeService.Infrastructure/"]
+RUN dotnet restore "src/ConsigneeService.API/ConsigneeService.API.csproj"
 COPY . .
-WORKDIR "/src/src/CommonService.API"
-RUN dotnet build "CommonService.API.csproj" -c Release -o /app/build
+WORKDIR "/src/src/ConsigneeService.API"
+RUN dotnet build "ConsigneeService.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "CommonService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "ConsigneeService.API.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "CommonService.API.dll"]
+ENTRYPOINT ["dotnet", "ConsigneeService.API.dll"]

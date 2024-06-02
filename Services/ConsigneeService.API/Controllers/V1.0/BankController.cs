@@ -1,6 +1,12 @@
 ﻿
 
-namespace CommonService.API.Controllers.V1._0;
+using ConsigneeService.API.Contracts.Common;
+using ConsigneeService.Application.Commands;
+using ConsigneeService.Application.Models;
+using ConsigneeService.Application.Queries;
+using ConsigneeService.Domain.Common;
+
+namespace ConsigneeService.API.Controllers.V1._0;
 public class BankController : BaseController
 {
     [HttpPost("Create")]

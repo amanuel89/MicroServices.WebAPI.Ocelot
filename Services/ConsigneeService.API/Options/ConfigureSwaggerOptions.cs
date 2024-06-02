@@ -2,7 +2,7 @@
 
 using Asp.Versioning.ApiExplorer;
 
-namespace CommonService.API.Options
+namespace ConsigneeService.API.Options
 {
     public class ConfigureSwaggerOptions : IConfigureOptions<SwaggerGenOptions>
     {

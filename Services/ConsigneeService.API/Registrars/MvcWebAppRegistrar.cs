@@ -1,8 +1,8 @@
 ﻿using Asp.Versioning.ApiExplorer;
 using Hangfire;
-using CommonService.API;
+using ConsigneeService.API;
 
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public class MvcWebAppRegistrar : IWebApplicationRegistrar
     {

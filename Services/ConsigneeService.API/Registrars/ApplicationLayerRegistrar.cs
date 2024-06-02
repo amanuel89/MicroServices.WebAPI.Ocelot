@@ -2,13 +2,13 @@
 using IdentityServer.Application.Services;
 using IdentityServer.Infrastructure.Context;
 using Microsoft.AspNetCore.Hosting;
-using CommonService.Application.Services;
-using CommonService.Application.Services.Helper;
-using CommonService.Infrastructure.HttpServices;
+using ConsigneeService.Application.Services;
+using ConsigneeService.Application.Services.Helper;
+using ConsigneeService.Infrastructure.HttpServices;
 using System.Net.NetworkInformation;
 using System.Reflection;
 
-namespace CommonService.API.Registrars
+namespace ConsigneeService.API.Registrars
 {
     public class ApplicationLayerRegistrar : IWebApplicationBuilderRegistrar
     {

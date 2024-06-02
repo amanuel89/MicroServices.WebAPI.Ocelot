@@ -1,6 +1,6 @@
 ﻿
 
-using CommonService.API.Controllers;
+using ConsigneeService.API.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace CommonService.API.Controllers.V1._0;
+namespace ConsigneeService.API.Controllers.V1._0;
 
 
 public class ActionsController : BaseController
@@ -20,8 +20,8 @@ public class ActionsController : BaseController
         _claimSeederService = claimSeederService;
     }
     [AllowAnonymous]
-    [HttpPost(nameof(CommonServiceClaimSeeder))]
-    public async Task<IActionResult> CommonServiceClaimSeeder()
+    [HttpPost(nameof(ConsigneeServiceClaimSeeder))]
+    public async Task<IActionResult> ConsigneeServiceClaimSeeder()
     {
 
         Assembly asm = Assembly.GetExecutingAssembly();

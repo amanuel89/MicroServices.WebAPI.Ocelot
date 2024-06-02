@@ -1,6 +1,6 @@
 ﻿using Common.Application.Models.Common;
 
-namespace CommonService.API.Filters;
+namespace ConsigneeService.API.Filters;
 public class ValidateModelAttribute : ActionFilterAttribute
 {
     public override void OnResultExecuting(ResultExecutingContext context)
