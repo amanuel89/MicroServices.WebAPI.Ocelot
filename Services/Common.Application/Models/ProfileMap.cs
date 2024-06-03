@@ -5,6 +5,6 @@ public class ProfileMap : Profile
 {
     public ProfileMap()
     {  
-     //   CreateMap<Bank, BankResponseDTO>().ReverseMap();
+        CreateMap<Country, CountryCreateRequest>().ReverseMap();
     }
 }

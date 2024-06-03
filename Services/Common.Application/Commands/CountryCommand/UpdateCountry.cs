@@ -1,61 +1,46 @@
-﻿//using AutoMapper;
-//using Common.Application.Models.Common;
-//using CommonService.Domain.Models;
+﻿using AutoMapper;
+using Common.Application.Models.Common;
+using CommonService.Domain.Models;
+using MediatR;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
-//namespace Common.Application.Commands.CountryCommand;
+namespace CommonService.Application.Commands
+{
+    public class UpdateCountry : IRequest<OperationResult<bool>>
+    {
+        public CountryUpdateRequest CountryUpdateRequest { get; set; }
+    }
 
-//public class UpdateCountry : IRequest<OperationResult<BankResponseDTO>>
-//{
-//    public long Id { get; set; }
-//    public required BankUpdateDTO Bank { get; set; }
-//}
-//public class UpdateBankHandler : IRequestHandler<UpdateCountry, OperationResult<BankResponseDTO>>
-//{
-//    private readonly IRepositoryBase<Bank> _Bank;
-//    private readonly IMapper _mapper;
-//    private readonly ImageUploader _imageUploader;
-//    public UpdateBankHandler(IRepositoryBase<Bank> _Bank, IMapper imapper, ImageUploader imageUploader)
-//    {
-//        this._Bank = _Bank;
-//        this._mapper = imapper;
-//        _imageUploader = imageUploader;
-//    }
-//    public async Task<OperationResult<BankResponseDTO>> Handle(UpdateCountry request, CancellationToken cancellationToken)
-//    {
-//        var result = new OperationResult<BankResponseDTO>();
-//        var Bank = _Bank.FirstOrDefault(x => x.Id == request.Id && x.RecordStatus != RecordStatus.Deleted);
+    public class UpdateCountryHandler : IRequestHandler<UpdateCountry, OperationResult<bool>>
+    {
+        private readonly IRepositoryBase<Country> _countryRepository;
 
-//        if (Bank == null)
-//        {
-//            result.AddError(ErrorCode.NotFound, "Record doesn't exist.");
-//            return result;
-//        }
+        public UpdateCountryHandler(IRepositoryBase<Country> countryRepository)
+        {
+            _countryRepository = countryRepository ?? throw new ArgumentNullException(nameof(countryRepository));
+        }
 
-//        var req = request.Bank;
-//        var bankLogo = Bank.BankLogo;
-//        if (req.BankLogo != null)
-//        {
-//            using (var memoryStream = new MemoryStream())
-//            {
-//                await req.BankLogo.CopyToAsync(memoryStream);
-//                byte[] fileBytes = memoryStream.ToArray();
-//                string fileName = $"{req.Name}_{DateTime.Now:yyyyMMddHHmmss}";
-//                ImageUploadResponse image = _imageUploader.UploadToWwwRoot(fileBytes, fileName, IMAGECATEGORY.DRIVERSPHOTO);
-
-//                if (!image.Success)
-//                {
-//                    result.AddError(ErrorCode.ValidationError, "Logo upload has issue: " + image.ErrorMessage);
-//                    return result;
-//                }
-//                bankLogo = image.Path;
-//            }
-//        }
-
-//        Bank.Update(req.Name, req.Name,req.AccountNumber, bankLogo);
-//        _Bank.Update(Bank);
-//        var response = _mapper.Map<BankResponseDTO>(Bank);
-//        result.Payload = response;
-//        result.Message = "Operation success";
-//        return result;
-//    }
-//}
+        public async Task<OperationResult<bool>> Handle(UpdateCountry request, CancellationToken cancellationToken)
+        {
+            var result = new OperationResult<bool>();
+            if (request.CountryUpdateRequest == null)
+            {
+                result.AddError(ErrorCode.NotFound, "Request body cannot be empty.");
+                return result;
+            }
+            var country = await _countryRepository.FirstOrDefaultAsync(x => x.Id == request.CountryUpdateRequest.Id && x.IsActive == true);
+            if (country == null)
+            {
+                result.AddError(ErrorCode.NotFound, "Record doesn't exist.");
+                return result;
+            }
+            var data = request.CountryUpdateRequest;
+            country.Update(data.Name, data.PoliticalName, data.Continent, data.TelephoneCode, data.TimeZone, data.Nationality, data.CountryCode,data.Remark);
+            await _countryRepository.UpdateAsync(country);
+            result.Message = "Operation success";
+            return result;
+        }
+    }
+}

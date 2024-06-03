@@ -7,6 +7,7 @@ using CommonService.Application.Services.Helper;
 using CommonService.Infrastructure.HttpServices;
 using System.Net.NetworkInformation;
 using System.Reflection;
+using Common.Application.Commands.CountryCommand;
 
 namespace CommonService.API.Registrars
 {
@@ -25,8 +26,8 @@ namespace CommonService.API.Registrars
                 k.Limits.MaxRequestBufferSize = 64 * 1024;
             });
 
-            //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateBanks>());
-            //builder.Services.AddAutoMapper(typeof(Program), typeof(CreateBanks));
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateCountry>());
+            builder.Services.AddAutoMapper(typeof(Program), typeof(CreateCountry));
         
             // application layer DI  
             builder.Services.AddScoped<IHttpService, HttpService>();

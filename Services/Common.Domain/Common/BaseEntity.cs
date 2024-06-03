@@ -10,11 +10,11 @@ namespace CommonService.Domain.Common
     public class BaseEntity
     {
         public long Id { get;  set; }
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; private set; }=true;
         [MaxLength(26)]
-        public string TrxnUnit { get; private set; }
+        public string TrxnUnit { get;  set; }=string.Empty;
         [MaxLength(100)]
-        public string Remark { get; private set; } = string.Empty;
+        public string Remark { get; set; } = string.Empty;
         public DateTime CreatedDate { get; private set; } = DateTime.Now;
         public string CreatedBy { get; private set; } = string.Empty;
         public DateTime LastUpdateOn { get; private set; } = DateTime.Now;

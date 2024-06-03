@@ -39,8 +39,31 @@ namespace CommonService.Domain.Models
                 TelephoneCode = telephoneCode,
                 TimeZone = timeZone,
                 Nationality = nationality,
-                CountryCode = countryCode
+                CountryCode = countryCode,
+                Remark=remark
             };
+        }
+
+        public void Update (
+            string name,
+            string politicalName,
+            long? continent,
+            string telephoneCode,
+            string timeZone,
+            string nationality,
+            string countryCode,
+            string remark)
+        {
+
+            this.Name = name;
+            this.PoliticalName = politicalName;
+            this.Continent = continent;
+            this.TelephoneCode = telephoneCode;
+            this.TimeZone = timeZone;
+            this.Nationality = nationality;
+            this.CountryCode = countryCode;
+            this.Remark = remark;
+            
         }
     }
 }

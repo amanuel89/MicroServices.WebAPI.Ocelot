@@ -1,65 +1,41 @@
-﻿//using AutoMapper;
-//using Common.Application.Models.Common;
-//using CommonService.Application.Services.Helper;
-//using CommonService.Domain.Models;
+﻿using AutoMapper;
+using Common.Application.Models.Common;
 
-//namespace Common.Application.Commands.CountryCommand;
-//public class CreateBanks : IRequest<OperationResult<BankResponseDTO>>
-//{
-//    public BankRequestDTO Bank { get;  set; }
-//}
-//public class CreateBanksHandler : IRequestHandler<CreateBanks, OperationResult<BankResponseDTO>>
-//{
-//    private readonly IRepositoryBase<Bank> _Banks;
-//    private readonly IMapper  _mapper;
-//    private readonly ImageUploader _imageUploader;
-//   // private readonly IRepositoryBase<VerificationCodes> _VerificationCodes;
-//    public CreateBanksHandler(IRepositoryBase<Bank> _Banks,IMapper imapper, ImageUploader imageUploader)
-//    {
-//        this._Banks = _Banks;
-//        _mapper = imapper;
-//        _imageUploader = imageUploader;
-//    }
+namespace Common.Application.Commands.CountryCommand;
+public class CreateCountry : IRequest<OperationResult<bool>>
+{
+    public CountryCreateRequest CountryRequest { get; set; }
+}
+public class CreateCountryHandler : IRequestHandler<CreateCountry, OperationResult<bool>>
+{
+    private readonly IRepositoryBase<Country> _countryRepository;
+    public CreateCountryHandler(IRepositoryBase<Country> _countryRepository)
+    {
+        this._countryRepository = _countryRepository;
+    }
 
-//    public async Task<OperationResult<BankResponseDTO>> Handle(CreateBanks request, CancellationToken cancellationToken)
-//    {
-//        var result = new OperationResult<BankResponseDTO>();
+    public async Task<OperationResult<bool>> Handle(CreateCountry request, CancellationToken cancellationToken)
+    {
+        var result = new OperationResult<bool>();
 
-//        try
-//        {         
+        try
+        {
+            if (request.CountryRequest == null)
+            {
+                result.AddError(ErrorCode.ValidationError, "Request body cannot be empty");
+                return result;
+            }
+            var data = request.CountryRequest;       
+            var country = Country.Create(data.Name, data.PoliticalName, data.Continent, data.TelephoneCode, data.TimeZone, data.Nationality, data.CountryCode, data.Remark);
+            await _countryRepository.AddAsync(country);
+            result.Payload = true;
+            result.Message = "Operation success";
+        }
+        catch (Exception ex)
+        {
+            result.AddError(ErrorCode.UnknownError, $"error occurred Country not registered.");
+        }
 
-//            var req = request.Bank;
-//            var bankLogo = "";
-//            if (req.BankLogo != null)
-//            {
-//                using (var memoryStream = new MemoryStream())
-//                {
-//                    await req.BankLogo.CopyToAsync(memoryStream);
-//                    byte[] fileBytes = memoryStream.ToArray();
-//                    string fileName = $"{req.Name}_{DateTime.Now:yyyyMMddHHmmss}";
-//                    ImageUploadResponse image = _imageUploader.UploadToWwwRoot(fileBytes, fileName, IMAGECATEGORY.OTHER);
-
-//                    if (!image.Success)
-//                    {
-//                        result.AddError(ErrorCode.ValidationError, "Logo upload has issue: " + image.ErrorMessage);
-//                        return result;
-//                    }
-//                    bankLogo= image.Path;
-//                }
-//            }     
-
-//            var bank = Bank.Create(req.Name, req.AccountName, req.AccountNumber, bankLogo);
-//            await _Banks.AddAsync(bank);
-
-//            var response = _mapper.Map<BankResponseDTO>(bank);
-//            result.Payload = response;
-//            result.Message = "Operation success";
-//        }
-//        catch (Exception ex)
-//        {
-//            result.AddError(ErrorCode.UnknownError, $"error occurred Bank not registered.");
-//        }
-
-//        return result;
-//    }
-//}
+        return result;
+    }
+}
