@@ -11,6 +11,12 @@ public class CountryController : BaseController
         var result = await _mediator.Send(new UpdateCountryStatus { Id = id });
         return result.IsError ? HandleErrorResponse(result.Errors) : Ok(result);
     }
-  
+    [HttpDelete("Delete/{id}")]
+    [ValidateModel]
+    public async Task<IActionResult> Delete(long id)
+    {
+        var result = await _mediator.Send(new DeleteCountry { Id = id });
+        return result.IsError ? HandleErrorResponse(result.Errors) : Ok(result);
+    }
 
 }

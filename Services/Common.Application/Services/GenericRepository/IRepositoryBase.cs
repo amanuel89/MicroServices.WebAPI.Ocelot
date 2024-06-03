@@ -24,6 +24,7 @@ namespace CommonService.Application.Services.GenericRepository
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate, params string[] path);
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, params string[] path);
         bool Remove(TEntity entity);
+        Task<bool> RemoveAsync(TEntity entity, CancellationToken cancellationToken = default);
         bool Update(TEntity entity);
          void UpdateTrans(TEntity entity);
         Task<bool> UpdateAsync(TEntity entity);

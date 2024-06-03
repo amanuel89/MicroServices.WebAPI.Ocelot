@@ -83,7 +83,11 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : 
         else
             return false;
     }
-
+    public async Task<bool> RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        _context.Remove(entity);
+        return await _context.SaveChangesAsync(cancellationToken) > 0;
+    }
     public bool Remove(TEntity entity)
     {
         _context.Remove(entity);

@@ -1,27 +1,50 @@
 ﻿using Common.Application.Models.Common;
+using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 
-namespace Common.Application.Commands.CountryCommand;
-
-public class UpdateCountryStatus : IRequest<OperationResult<bool>>
+namespace Common.Application.Commands.CountryCommand
 {
-    public long Id { get; set; }
-}
-public class UpdateCountryStatusHandler : IRequestHandler<UpdateCountryStatus, OperationResult<bool>>
-{
-    private readonly IRepositoryBase<Country> _Country;
-    public UpdateCountryStatusHandler(IRepositoryBase<Country> _Country) => this._Country = _Country;
-    public async Task<OperationResult<bool>> Handle(UpdateCountryStatus request, CancellationToken cancellationToken)
+    public class UpdateCountryStatus : IRequest<OperationResult<bool>>
     {
-        var result = new OperationResult<bool>();
-        var Country = _Country.FirstOrDefault(x => x.Id == request.Id);
-        if (Country == null)
+        public long Id { get; set; }
+    }
+
+    public class UpdateCountryStatusHandler : IRequestHandler<UpdateCountryStatus, OperationResult<bool>>
+    {
+        private readonly IRepositoryBase<Country> _countryRepository;
+
+        public UpdateCountryStatusHandler(IRepositoryBase<Country> countryRepository) =>
+            _countryRepository = countryRepository;
+
+        public async Task<OperationResult<bool>> Handle(UpdateCountryStatus request, CancellationToken cancellationToken)
         {
-            result.AddError(ErrorCode.NotFound, "Record doesn't exist.");
+            var result = new OperationResult<bool>();
+            var country = await _countryRepository.FirstOrDefaultAsync(x => x.Id == request.Id);
+
+            if (country == null)
+            {
+                result.AddError(ErrorCode.NotFound, "Record doesn't exist.");
+                return result;
+            }
+
+            country.UpdateRecordStatus(!country.IsActive);
+            var updateResult = await _countryRepository.UpdateAsync(country);
+
+            if (updateResult)
+            {
+                result.Payload = true;
+                result.Message = country.IsActive
+                    ? "The Record is Activated Successfully"
+                    : "The Record is Deactivated Successfully";
+            }
+            else
+            {
+                result.AddError(ErrorCode.UnknownError, "Error occurred while updating the record.");
+            }
+
+            result.Payload = updateResult;
             return result;
         }
-        Country.UpdateRecordStatus(!Country.IsActive);   
-        result.Payload = _Country.Update(Country);
-        result.Message = Country.IsActive==true ? "The Record is Activated Successfully" : "The Record is Deactivated Successfully";
-        return result;
     }
 }
