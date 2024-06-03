@@ -37,6 +37,12 @@ public class CountryController : BaseController
 
 
     #region Query
-
+    [HttpGet("Get/{id}")]
+    [ValidateModel]
+    public async Task<IActionResult> Get(long id)
+    {
+        var result = await _mediator.Send(new GetCountry { Id = id });
+        return result.IsError ? HandleErrorResponse(result.Errors) : Ok(result);
+    }
     #endregion
 }

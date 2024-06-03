@@ -6,5 +6,7 @@ public class ProfileMap : Profile
     public ProfileMap()
     {  
         CreateMap<Country, CountryCreateRequest>().ReverseMap();
+        CreateMap<Country, CountryListResponse>().ReverseMap();
+        CreateMap<Country, CountrySingleResponse>().ReverseMap();
     }
 }
