@@ -44,5 +44,13 @@ public class CountryController : BaseController
         var result = await _mediator.Send(new GetCountry { Id = id });
         return result.IsError ? HandleErrorResponse(result.Errors) : Ok(result);
     }
+
+    [HttpGet("GetList")]
+    [ValidateModel]
+    public async Task<IActionResult> GetList(int pageNumber=0,int pageSize=0,bool active=true)
+    {
+        var result = await _mediator.Send(new GetCountryList { PageNumber = pageNumber,PageSize=pageSize,Active=active });
+        return result.IsError ? HandleErrorResponse(result.Errors) : Ok(result);
+    }
     #endregion
 }
