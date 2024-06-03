@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.BaseObject")]
-    public class BaseObject : BaseEntity
-    {
-        [MaxLength(50)]
+    [Table("Common.Position")]
+    public class Position : BaseEntity
+    { 
+        [MaxLength(100)]
         public string Description { get; private set; } = string.Empty;
-        public bool? Deleted { get; private set; }      
     }
 }

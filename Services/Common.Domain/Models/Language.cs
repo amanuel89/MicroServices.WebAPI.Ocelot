@@ -4,22 +4,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("FMS.AccountCategory")]
+    [Table("Common.Languge")]
     public class Languge : BaseEntity
     {
-        public int Id { get; set; }
         [MaxLength(100)]
-        public string LangugeName { get; set; }
+        public string LangugeName { get; set; } = string.Empty;
         [MaxLength(2)]
-        public string LangugeShortCode { get; set; }
+        public string LangugeShortCode { get; set; } = string.Empty;
         [MaxLength(200)]
-        public string LangugeDescription { get; set; }
-        public bool? IsActive { get; set; }
+        public string LangugeDescription { get; set; } = string.Empty;
         public bool? IsDefault { get; set; }
-        [MaxLength(100)]
-        public string Remark { get; set; }
 
-        public static Languge Create(int id, string langugeName, string langugeShortCode, string langugeDescription, bool? isActive, bool? isDefault, string remark)
+        public static Languge Create(int id, string langugeName, string langugeShortCode, string langugeDescription , bool? isDefault, string remark)
         {
             return new Languge
             {
@@ -27,9 +23,7 @@ namespace CommonService.Domain.Models
                 LangugeName = langugeName,
                 LangugeShortCode = langugeShortCode,
                 LangugeDescription = langugeDescription,
-                IsActive = isActive,
                 IsDefault = isDefault,
-                Remark = remark
             };
         }
     }

@@ -25,8 +25,8 @@ namespace CommonService.API.Registrars
                 k.Limits.MaxRequestBufferSize = 64 * 1024;
             });
 
-            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateBanks>());
-            builder.Services.AddAutoMapper(typeof(Program), typeof(CreateBanks));
+            //builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateBanks>());
+            //builder.Services.AddAutoMapper(typeof(Program), typeof(CreateBanks));
         
             // application layer DI  
             builder.Services.AddScoped<IHttpService, HttpService>();

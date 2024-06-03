@@ -1,11 +1,12 @@
-﻿public class TagDefinition
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("Common.TagDefinition")]
+public class TagDefinition : BaseEntity
 {
-    public int Id { get; set; }
+    [MaxLength(100)]
     public string Description { get; set; }
-    public bool? IsActive { get; set; }
     public bool? IsSystemDefined { get; set; }
-    public int? TrxnUnit { get; set; }
-    public string Remark { get; set; }
 
     // Factory methods
     public static TagDefinition Create(int id, string description)
@@ -17,12 +18,9 @@
         };
     }
 
-    public void Update(string description, bool? isActive, bool? isSystemDefined, int? trxnUnit, string remark)
+    public void Update(string description, bool? isSystemDefined)
     {
         Description = description;
-        IsActive = isActive;
         IsSystemDefined = isSystemDefined;
-        TrxnUnit = trxnUnit;
-        Remark = remark;
     }
 }

@@ -1,15 +1,15 @@
-﻿public class Subscription
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("Common.Subscription")]
+public class Subscription : BaseEntity
 {
-    public int Id { get; set; }
+    [MaxLength(50)]
     public string Code { get; set; }
+    [MaxLength(200)]
     public string Name { get; set; }
+    [MaxLength(1000)]
     public string Description { get; set; }
-    public DateTime? CreatedOn { get; set; }
-    public int? CreatedBy { get; set; }
-    public DateTime? UpdatedOn { get; set; }
-    public int? UpdatedBy { get; set; }
-    public int? TrxnUnit { get; set; }
-    public string Remark { get; set; }
 
     // Factory methods
     public static Subscription Create(int id, string code, string name)
@@ -22,16 +22,10 @@
         };
     }
 
-    public void Update(string code, string name, string description, DateTime? createdOn, int? createdBy, DateTime? updatedOn, int? updatedBy, int? trxnUnit, string remark)
+    public void Update(string code, string name, string description)
     {
         Code = code;
         Name = name;
         Description = description;
-        CreatedOn = createdOn;
-        CreatedBy = createdBy;
-        UpdatedOn = updatedOn;
-        UpdatedBy = updatedBy;
-        TrxnUnit = trxnUnit;
-        Remark = remark;
     }
 }

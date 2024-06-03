@@ -1,5 +1,8 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CommonService.Domain.Models;
+[Table("Common.AuditEventLog")]
 public class AuditEventLog
 {
     public long Id { get; set; }

@@ -1,16 +1,18 @@
 ﻿using CommonService.Domain.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
+    [Table("Common.HolidayDefinition")]
     public class HolidayDefinition : BaseEntity
     {
+        [MaxLength(150)]
         public string Description { get; private set; } = string.Empty;
         public long? Type { get; private set; }
         public bool? IsFixed { get; private set; }
         public bool? WillClose { get; private set; }
         public long? AlertBefore { get; private set; }
-        public long? TrxnUnit { get; private set; }
-        public string Remark { get; private set; } = string.Empty;
 
         public virtual List<Holiday> Holidays { get; private set; } = new List<Holiday>();
 
@@ -19,9 +21,7 @@ namespace CommonService.Domain.Models
             long? type,
             bool? isFixed,
             bool? willClose,
-            long? alertBefore,
-            long? trxnUnit,
-            string remark)
+            long? alertBefore)
         {
             return new HolidayDefinition
             {
@@ -29,9 +29,7 @@ namespace CommonService.Domain.Models
                 Type = type,
                 IsFixed = isFixed,
                 WillClose = willClose,
-                AlertBefore = alertBefore,
-                TrxnUnit = trxnUnit,
-                Remark = remark
+                AlertBefore = alertBefore
             };
         }
     }

@@ -1,15 +1,24 @@
 ﻿using CommonService.Domain.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
+    [Table("Common.Country")]
     public class Country : BaseEntity
     {
+        [MaxLength(100)]
         public string Name { get; private set; } = string.Empty;
+        [MaxLength(100)]
         public string PoliticalName { get; private set; } = string.Empty;
         public long? Continent { get; private set; }
-        public string TelephoneCode { get; private set; } = string.Empty;
-        public string TimeZone { get; private set; } = string.Empty;
-        public string Nationality { get; private set; } = string.Empty;
+        [MaxLength(10)]
+        public string TelephoneCode { get; private set; } = string.Empty; 
+        [MaxLength(10)]
+        public string TimeZone { get; private set; } = string.Empty; 
+        [MaxLength(50)]
+        public string Nationality { get; private set; } = string.Empty; 
+        [MaxLength(10)]
         public string CountryCode { get; private set; } = string.Empty;
 
         public static Country Create(

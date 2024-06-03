@@ -1,8 +1,9 @@
 ﻿using CommonService.Domain.Common;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-
+    [Table("Common.Holiday")]
     public class Holiday : BaseEntity
     {
         public long? HolidayDefinitionId { get; private set; }
@@ -10,8 +11,6 @@ namespace CommonService.Domain.Models
         public DateTime? ActualDate { get; private set; }
         public DateTime? CreatedOn { get; private set; }
         public DateTime? UpdatedOn { get; private set; }
-        public long? TrxnUnit { get; private set; }
-        public string Remark { get; private set; } = string.Empty;
 
         public virtual HolidayDefinition HolidayDefinition { get; private set; }
 
@@ -20,9 +19,7 @@ namespace CommonService.Domain.Models
             DateTime? forecastedDate,
             DateTime? actualDate,
             DateTime? createdOn,
-            DateTime? updatedOn,
-            long? trxnUnit,
-            string remark)
+            DateTime? updatedOn)
         {
             return new Holiday
             {
@@ -30,9 +27,7 @@ namespace CommonService.Domain.Models
                 ForecastedDate = forecastedDate,
                 ActualDate = actualDate,
                 CreatedOn = createdOn,
-                UpdatedOn = updatedOn,
-                TrxnUnit = trxnUnit,
-                Remark = remark
+                UpdatedOn = updatedOn
             };
         }
     }

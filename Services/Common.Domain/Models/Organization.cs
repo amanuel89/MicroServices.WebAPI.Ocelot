@@ -1,21 +1,49 @@
-﻿public class Organization : BaseEntity
-{
-    public int Id { get; set; }
-    public string Name { get; set; }
-    public string OrganizationCode { get; set; }
-    public string Database { get; set; }
-    public string Blob { get; set; }
-    public string Email { get; set; }
-    public string Description { get; set; }
-    public string Logo { get; set; }
-    public int? SubscriptionId { get; set; }
-    public int? DefaultLanguage { get; set; }
-    public DateTime? CreatedOn { get; set; }
-    public int? CreatedBy { get; set; }
-    public DateTime? UpdatedOn { get; set; }
-    public int? UpdatedBy { get; set; }
-    public int? TrxnUnit { get; set; }
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+[Table("Common.Organization")]
+public class Organization : BaseEntity
+{
+    [MaxLength(200)]
+    public string Name { get; set; } = string.Empty;
+    [MaxLength(26)]
+    public string OrganizationCode { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string TradeName { get; set; } = string.Empty;
+    [MaxLength(500)]
+    public string Database { get; set; } = string.Empty;
+    [MaxLength(1000)]
+    public string Blob { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string Email { get; set; } = string.Empty;
+
+    [MaxLength(100)]
+    public string City { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string SubCity { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string Wereda { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string PhoneNumber { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string WebSite { get; set; } = string.Empty;
+    [MaxLength(50)]
+    public string POBox { get; set; } = string.Empty;
+    [MaxLength(50)]
+    public string SpecificLocation { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string TIN_No { get; set; } = string.Empty;
+    [MaxLength(26)]
+    public string VATRegistrationNo { get; set; } = string.Empty;
+    [MaxLength(26)]
+    public string CompanyTaxType { get; set; } = string.Empty;
+    [MaxLength(1000)]
+    public string Description { get; set; } = string.Empty;
+    [MaxLength(500)]
+    public string LogoUrl { get; set; } = string.Empty;
+    public long? SubscriptionId { get; set; }
+    public long? DefaultLanguage { get; set; }
+   
     // Factory methods
     public static Organization Create(int id, string name)
     {
@@ -26,7 +54,7 @@
         };
     }
 
-    public void Update(string name, string organizationCode, string database, string blob, string email, string description, string logo, int? subscriptionId, int? defaultLanguage, DateTime? createdOn, int? createdBy, DateTime? updatedOn, int? updatedBy, int? trxnUnit )
+    public void Update(string name, string organizationCode, string database, string blob, string email, string description, string logo, int? subscriptionId, int? defaultLanguage )
     {
         Name = name;
         OrganizationCode = organizationCode;
@@ -34,13 +62,8 @@
         Blob = blob;
         Email = email;
         Description = description;
-        Logo = logo;
         SubscriptionId = subscriptionId;
         DefaultLanguage = defaultLanguage;
-        CreatedOn = createdOn;
-        CreatedBy = createdBy;
-        UpdatedOn = updatedOn;
-        UpdatedBy = updatedBy;
-        TrxnUnit = trxnUnit;
+     
     }
 }

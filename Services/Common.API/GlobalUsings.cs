@@ -17,7 +17,6 @@ global using Microsoft.Extensions.Localization;
 global using CommonService.Application.Models;
 global using CommonService.Application.Queries;
 global using Microsoft.AspNetCore.Mvc.ApiExplorer;
-global using CommonService.Application.Commands;
 global using CommonService.Infrastructure.Context;
 global using CommonService.Application.Services.ServiceIntegration;
 global using CommonService.Application.Services.GenericRepository;

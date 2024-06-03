@@ -1,11 +1,15 @@
-﻿public class SystemConfiguration
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("Common.SystemConfiguration")]
+public class SystemConfiguration : BaseEntity
 {
-    public int Id { get; set; }
+    [MaxLength(100)]
     public string Attribute { get; set; }
+    [MaxLength(200)]
     public string CurrentValue { get; set; }
+    [MaxLength(200)]
     public string PreviousValue { get; set; }
-    public int? TrxnUnit { get; set; }
-    public string Remark { get; set; }
 
     // Factory methods
     public static SystemConfiguration Create(int id, string attribute)
@@ -17,12 +21,10 @@
         };
     }
 
-    public void Update(string attribute, string currentValue, string previousValue, int? trxnUnit, string remark)
+    public void Update(string attribute, string currentValue, string previousValue)
     {
         Attribute = attribute;
         CurrentValue = currentValue;
         PreviousValue = previousValue;
-        TrxnUnit = trxnUnit;
-        Remark = remark;
     }
 }

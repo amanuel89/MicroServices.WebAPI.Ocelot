@@ -3,7 +3,7 @@
 //using CommonService.Application.Services.Helper;
 //using CommonService.Domain.Models;
 
-//namespace CommonService.Application.Commands;
+//namespace Common.Application.Commands.CountryCommand;
 //public class CreateBanks : IRequest<OperationResult<BankResponseDTO>>
 //{
 //    public BankRequestDTO Bank { get;  set; }

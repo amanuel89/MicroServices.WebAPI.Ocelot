@@ -9,7 +9,7 @@ namespace CommonService.API.Registrars
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {    
-            builder.Services.AddScoped(typeof(IRepositoryBase<Bank>), typeof(RepositoryBase<Bank>));
+            builder.Services.AddScoped(typeof(IRepositoryBase<Country>), typeof(RepositoryBase<Country>));
         }
     }
 }

@@ -1,20 +1,22 @@
-﻿public class OrganizationBankAccount
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+[Table("Common.OrganizationBankAccount")]
+public class OrganizationBankAccount : BaseEntity
 {
-    public int Id { get; set; }
     public int? Organization { get; set; }
     public int? OrganizationUnit { get; set; }
     public int? PaymentProcessor { get; set; }
     public int? PaymentProcessorUnit { get; set; }
-    public string Description { get; set; }
+    [MaxLength(100)]
+    public string Description { get; set; } = string.Empty;
     public int? Type { get; set; }
     public int? Category { get; set; }
-    public string Credential { get; set; }
-    public string AccountNo { get; set; }
+    [MaxLength(50)]
+    public string Credential { get; set; } = string.Empty;
+    [MaxLength(100)]
+    public string AccountNo { get; set; } = string.Empty;
     public bool? IsDigital { get; set; }
-    public DateTime? CreatedOn { get; set; }
-    public DateTime? LastModifiedOn { get; set; }
-    public int? TrxnUnit { get; set; }
-    public string Remark { get; set; }
 
     // Factory methods
     public static OrganizationBankAccount Create(int id)
@@ -25,7 +27,7 @@
         };
     }
 
-    public void Update(int? organization, int? organizationUnit, int? paymentProcessor, int? paymentProcessorUnit, string description, int? type, int? category, string credential, string accountNo, bool? isDigital, DateTime? createdOn, DateTime? lastModifiedOn, int? trxnUnit, string remark)
+    public void Update(int? organization, int? organizationUnit, int? paymentProcessor, int? paymentProcessorUnit, string description, int? type, int? category, string credential, string accountNo, bool? isDigital)
     {
         Organization = organization;
         OrganizationUnit = organizationUnit;
@@ -37,9 +39,5 @@
         Credential = credential;
         AccountNo = accountNo;
         IsDigital = isDigital;
-        CreatedOn = createdOn;
-        LastModifiedOn = lastModifiedOn;
-        TrxnUnit = trxnUnit;
-        Remark = remark;
     }
 }

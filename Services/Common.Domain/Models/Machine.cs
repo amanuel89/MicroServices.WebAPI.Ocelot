@@ -1,31 +1,33 @@
 ﻿using CommonService.Domain.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
+    [Table("Common.Machine")]
     public class Machine : BaseEntity
     {
+        [MaxLength(200)]
         public string Name { get; private set; } = string.Empty;
+        [MaxLength(500)]
         public string Description { get; private set; } = string.Empty;
+        [MaxLength(26)]
         public long? ConnectionType { get; private set; }
         public long? SystemModel { get; private set; }
         public long? Type { get; private set; }
         public long? Host { get; private set; }
+        [MaxLength(500)]
         public string MachineValue { get; private set; } = string.Empty;
         public long? Category { get; private set; }
+        [MaxLength(50)]
         public string IpAddress { get; private set; } = string.Empty;
+        [MaxLength(100)]
         public string MacAddress { get; private set; } = string.Empty;
         public long? IpPort { get; private set; }
         public long? SerialPort { get; private set; }
         public long? Unit { get; private set; }
         public bool? IsEvenParity { get; private set; }
         public long? BaudRate { get; private set; }
-        public bool? IsActive { get; private set; }
-        public DateTime? CreatedOn { get; private set; }
-        public long? CreatedBy { get; private set; }
-        public DateTime? UpdatedOn { get; private set; }
-        public long? UpdatedBy { get; private set; }
-        public long? TrxnUnit { get; private set; }
-        public string Remark { get; private set; } = string.Empty;
 
         public static Machine Create(
             string name,
@@ -42,14 +44,7 @@ namespace CommonService.Domain.Models
             long? serialPort,
             long? unit,
             bool? isEvenParity,
-            long? baudRate,
-            bool? isActive,
-            DateTime? createdOn,
-            long? createdBy,
-            DateTime? updatedOn,
-            long? updatedBy,
-            long? trxnUnit,
-            string remark)
+            long? baudRate)
         {
             return new Machine
             {
@@ -67,14 +62,7 @@ namespace CommonService.Domain.Models
                 SerialPort = serialPort,
                 Unit = unit,
                 IsEvenParity = isEvenParity,
-                BaudRate = baudRate,
-                IsActive = isActive,
-                CreatedOn = createdOn,
-                CreatedBy = createdBy,
-                UpdatedOn = updatedOn,
-                UpdatedBy = updatedBy,
-                TrxnUnit = trxnUnit,
-                Remark = remark
+                BaudRate = baudRate
             };
         }
     }

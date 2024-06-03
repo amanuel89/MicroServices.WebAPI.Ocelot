@@ -2,14 +2,14 @@
 //using Common.Application.Models.Common;
 //using CommonService.Domain.Models;
 
-//namespace CommonService.Application.Commands;
+//namespace Common.Application.Commands.CountryCommand;
 
-//public class UpdateBank : IRequest<OperationResult<BankResponseDTO>>
+//public class UpdateCountry : IRequest<OperationResult<BankResponseDTO>>
 //{
 //    public long Id { get; set; }
 //    public required BankUpdateDTO Bank { get; set; }
 //}
-//public class UpdateBankHandler : IRequestHandler<UpdateBank, OperationResult<BankResponseDTO>>
+//public class UpdateBankHandler : IRequestHandler<UpdateCountry, OperationResult<BankResponseDTO>>
 //{
 //    private readonly IRepositoryBase<Bank> _Bank;
 //    private readonly IMapper _mapper;
@@ -20,7 +20,7 @@
 //        this._mapper = imapper;
 //        _imageUploader = imageUploader;
 //    }
-//    public async Task<OperationResult<BankResponseDTO>> Handle(UpdateBank request, CancellationToken cancellationToken)
+//    public async Task<OperationResult<BankResponseDTO>> Handle(UpdateCountry request, CancellationToken cancellationToken)
 //    {
 //        var result = new OperationResult<BankResponseDTO>();
 //        var Bank = _Bank.FirstOrDefault(x => x.Id == request.Id && x.RecordStatus != RecordStatus.Deleted);

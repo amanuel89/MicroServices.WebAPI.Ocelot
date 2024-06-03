@@ -1,25 +1,27 @@
 ﻿using CommonService.Domain.Common;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
+    [Table("Common.Currency")]
     public class Currency : BaseEntity
     {
         public long? Country { get; private set; }
+        [MaxLength(100)]
         public string Description { get; private set; } = string.Empty;
+        [MaxLength(50)]
         public string Sign { get; private set; } = string.Empty;
+        [MaxLength(10)]
         public string Abbreviation { get; private set; } = string.Empty;
         public bool? IsDefault { get; private set; }
-        public long? TrxnUnit { get; private set; }
-        public string Remark { get; private set; } = string.Empty;
 
         public static Currency Create(
             long? country,
             string description,
             string sign,
             string abbreviation,
-            bool? isDefault,
-            long? trxnUnit,
-            string remark)
+            bool? isDefault)
         {
             return new Currency
             {
@@ -28,8 +30,6 @@ namespace CommonService.Domain.Models
                 Sign = sign,
                 Abbreviation = abbreviation,
                 IsDefault = isDefault,
-                TrxnUnit = trxnUnit,
-                Remark = remark
             };
         }
     }
