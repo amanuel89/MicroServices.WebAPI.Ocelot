@@ -7,7 +7,7 @@ namespace CommonService.Domain.Models
     [Table("Common.Currency")]
     public class Currency : BaseEntity
     {
-        public long? Country { get; private set; }
+        public long? CountryId { get; private set; }
         [MaxLength(100)]
         public string Description { get; private set; } = string.Empty;
         [MaxLength(50)]
@@ -15,7 +15,7 @@ namespace CommonService.Domain.Models
         [MaxLength(10)]
         public string Abbreviation { get; private set; } = string.Empty;
         public bool? IsDefault { get; private set; }
-
+        public virtual Country Country { get; set; }
         public static Currency Create(
             long? country,
             string description,
@@ -25,7 +25,7 @@ namespace CommonService.Domain.Models
         {
             return new Currency
             {
-                Country = country,
+                CountryId = country,
                 Description = description,
                 Sign = sign,
                 Abbreviation = abbreviation,

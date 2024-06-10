@@ -9,10 +9,10 @@ namespace CommonService.Domain.Models
     {
         [MaxLength(150)]
         public string Description { get; private set; } = string.Empty;
-        public long? Type { get; private set; }
+        public long? Type { get; private set; } //syslookup
         public bool? IsFixed { get; private set; }
         public bool? WillClose { get; private set; }
-        public long? AlertBefore { get; private set; }
+        public int? AlertBefore { get; private set; }
 
         public virtual List<Holiday> Holidays { get; private set; } = new List<Holiday>();
 
@@ -21,7 +21,7 @@ namespace CommonService.Domain.Models
             long? type,
             bool? isFixed,
             bool? willClose,
-            long? alertBefore)
+            int? alertBefore)
         {
             return new HolidayDefinition
             {

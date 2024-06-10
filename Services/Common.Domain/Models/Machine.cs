@@ -13,22 +13,26 @@ namespace CommonService.Domain.Models
         public string Description { get; private set; } = string.Empty;
         [MaxLength(26)]
         public long? ConnectionType { get; private set; }
-        public long? SystemModel { get; private set; }
-        public long? Type { get; private set; }
-        public long? Host { get; private set; }
+        public long? SystemModelId { get; private set; } //syslookup
+        public long? TypeId { get; private set; }//syslookup
+        public long? HostMachineId { get; private set; } //parentid
         [MaxLength(500)]
         public string MachineValue { get; private set; } = string.Empty;
-        public long? Category { get; private set; }
+        public long? CategoryId { get; private set; } //category
         [MaxLength(50)]
         public string IpAddress { get; private set; } = string.Empty;
         [MaxLength(100)]
         public string MacAddress { get; private set; } = string.Empty;
         public long? IpPort { get; private set; }
         public long? SerialPort { get; private set; }
-        public long? Unit { get; private set; }
+        public long? OrganizationUnitId { get; private set; }
         public bool? IsEvenParity { get; private set; }
         public long? BaudRate { get; private set; }
-
+        public virtual Machine HostMachine { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual SystemLookup SystemModel { get; set; }
+        public virtual SystemLookup Type { get; set; }
+        public virtual OrganizationUnit OrganizationUnit { get; set; }
         public static Machine Create(
             string name,
             string description,
@@ -51,16 +55,16 @@ namespace CommonService.Domain.Models
                 Name = name,
                 Description = description,
                 ConnectionType = connectionType,
-                SystemModel = systemModel,
-                Type = type,
-                Host = host,
+                SystemModelId = systemModel,
+                TypeId = type,
+                HostMachineId = host,
                 MachineValue = machineValue,
-                Category = category,
+                CategoryId = category,
                 IpAddress = ipAddress,
                 MacAddress = macAddress,
                 IpPort = ipPort,
                 SerialPort = serialPort,
-                Unit = unit,
+                OrganizationUnitId = unit,
                 IsEvenParity = isEvenParity,
                 BaudRate = baudRate
             };

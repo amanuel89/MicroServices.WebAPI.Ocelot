@@ -11,8 +11,8 @@ namespace CommonService.Domain.Models
         public string Description { get; private set; } = string.Empty;
         public int Image { get; private set; }
         public int DisplayOrder { get; private set; }
-        public int IsSystemDefined { get; private set; }
-        public int ObjectType { get; private set; }
-        public int Parent { get; private set; }
+        public bool IsSystemDefined { get; private set; }
+        public long ObjectTypeId { get; private set; }
+        public long Parent { get; private set; }
     }
 }

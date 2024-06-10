@@ -9,12 +9,13 @@ namespace CommonService.Domain.Models
     {
         [MaxLength(200)]
         public string Name { get; private set; } = string.Empty;
-        public int Type { get; private set; } 
-        public int Category { get; private set; }
+        public long TypeId { get; private set; } //syslookupid
+        public long CategoryId { get; private set; }//syslookupid
         public DateTime BeginningDate { get; private set; } 
         public DateTime EndingDate { get; private set; }
         public int Parent { get; private set; } 
-        public int Index { get; private set; } 
-
+        public int Index { get; private set; }
+        public virtual SystemLookup Type { get; set; }
+        public virtual SystemLookup Category { get; set; }
     }
 }

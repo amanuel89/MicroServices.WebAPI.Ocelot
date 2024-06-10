@@ -6,7 +6,7 @@ public class OrganizationUnit : BaseEntity
 {
     [MaxLength(26)]
     public string Code { get; set; } = string.Empty;
-    public long? Organization { get; set; }
+    public long? OrganizationId { get; set; }
 
     [MaxLength(100)]
     public string Name { get; set; } = string.Empty;
@@ -14,13 +14,13 @@ public class OrganizationUnit : BaseEntity
     [MaxLength(100)]
     public string Description { get; set; } = string.Empty;
 
-    public int? Type { get; set; }
+    public int? Type { get; set; } //systemlookup
 
-    public int? Specialization { get; set; }
+    public int? Specialization { get; set; }//systemlookup
 
-    public int? Purpose { get; set; }
+    public int? Purpose { get; set; }//systemlookup
 
-    public long? Category { get; set; }
+    public long? CategoryId { get; set; }
 
     [MaxLength(20)]
     public string Abbreviation { get; set; } = string.Empty;
@@ -62,13 +62,13 @@ public class OrganizationUnit : BaseEntity
     [MaxLength(26)]
     public string Wereda { get; set; } = string.Empty;
 
-    public int? Subcity { get; set; }
+    public int? Subcity { get; set; } //systemlookup
 
-    public int? City { get; set; }
+    public int? City { get; set; }//systemlookup
 
-    public int? Region { get; set; }
+    public int? Region { get; set; } //systemlookup
 
-    public int? Country { get; set; }
+    public int? CountryId { get; set; }
 
     [MaxLength(100)]
     public string Address_I { get; set; } = string.Empty;
@@ -81,7 +81,7 @@ public class OrganizationUnit : BaseEntity
 
     public int? ParentId { get; set; }
 
-    public int? DefaultTag { get; set; }
+    public int? DefaultTag { get; set; } // tag id
 
     public bool? IsEcommerce { get; set; }
 
@@ -101,13 +101,13 @@ public class OrganizationUnit : BaseEntity
     public void Update(string code, int? organization, string name, string description, int? type, int? specialization, int? purpose, int? category, string abbreviation, double? longitude, double? latitude, string contact, string phone1, string phone2, string email, string website, string specificAddress, string street, string houseNumber, string poBox, string kebele, string wereda, int? subcity, int? city, int? region, int? country, string address_I, string address_II, string address_III, int? parentId, int? defaultTag, bool? isEcommerce, string imageUrl)
     {
         Code = code;
-        Organization = organization;
+        OrganizationId = organization;
         Name = name;
         Description = description;
         Type = type;
         Specialization = specialization;
         Purpose = purpose;
-        Category = category;
+        CategoryId = category;
         Abbreviation = abbreviation;
         Longitude = longitude;
         Latitude = latitude;
@@ -125,7 +125,7 @@ public class OrganizationUnit : BaseEntity
         Subcity = subcity;
         City = city;
         Region = region;
-        Country = country;
+        CountryId = country;
         Address_I = address_I;
         Address_II = address_II;
         Address_III = address_III;
