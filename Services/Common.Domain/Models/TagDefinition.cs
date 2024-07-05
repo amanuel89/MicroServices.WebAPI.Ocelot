@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.TagDefinition")]
+[Table("TagDefinition", Schema = "Common")]
 public class TagDefinition : BaseEntity
 {
     [MaxLength(100)]

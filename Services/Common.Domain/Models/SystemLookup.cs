@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.SystemLookup")]
+[Table("SystemLookup", Schema = "Common")]
 public class SystemLookup: BaseEntity
 {
     public int? Index { get; set; }
@@ -15,11 +15,16 @@ public class SystemLookup: BaseEntity
     public bool? IsDefault { get; set; }
 
     // Factory methods
-    public static SystemLookup Create(int id)
+    public static SystemLookup Create(int? index, bool? isSystemDefined, string type, string description, string value, bool? isDefault)
     {
         return new SystemLookup
         {
-            Id = id
+           Index = index,
+           IsSystemDefined = isSystemDefined,
+           Type = type,
+           Description = description,
+           Value = value,
+           IsDefault = isDefault
         };
     }
 

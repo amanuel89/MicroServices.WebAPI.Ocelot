@@ -6,7 +6,7 @@ namespace ConsigneeService.API.Registrars
         public void RegisterServices(WebApplicationBuilder builder)
         {
             builder.Services.AddSwaggerGen();
-            builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+            builder.Services.ConfigureOptions<ConfigureSwaggerOptions>(); 
         }
     }
 }

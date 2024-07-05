@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.Organization")]
+[Table("Organization", Schema = "Common")]
 public class Organization : BaseEntity
 {
     [MaxLength(200)]

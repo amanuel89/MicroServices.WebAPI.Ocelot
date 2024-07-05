@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConsigneeService.Application\ConsigneeService.Application.csproj" />
+    <ProjectReference Include="C:\Users\et\source\repos\RabbitMq\RabbitMq.Core\RabbitMq.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\SharedLocalizationResource.am.resx">

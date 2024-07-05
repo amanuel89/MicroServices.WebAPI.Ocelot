@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.Subscription")]
+[Table("Subscription", Schema = "Common")]
 public class Subscription : BaseEntity
 {
     [MaxLength(50)]

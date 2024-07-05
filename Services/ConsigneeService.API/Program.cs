@@ -6,6 +6,9 @@ using OpenTelemetry.Exporter;
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters.Prometheus;
 using Hangfire.Logging;
+using RabbitMq.Shared.Messaging;
+using RabbitMq.Shared.HealthCheck;
+using OrderService.Messaging.Listener;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +19,11 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Services.AddLogging();
+
+builder.Services.AddServiceHealthCheck();
+
+builder.Services.Configure<RabbitMqConfiguration>(options => builder.Configuration.GetSection("RabbitMq").Bind(options));
+builder.Services.AddHostedService<CountryDeletedListener>();
 builder.Host.UseMetricsWebTracking().UseMetrics(options =>
 {
     options.EndpointOptions = endpointsOptions =>

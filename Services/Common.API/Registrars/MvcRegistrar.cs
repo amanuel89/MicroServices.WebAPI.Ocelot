@@ -16,6 +16,9 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using App.Metrics.Formatters.Json;
 using Prometheus;
 using Common.Application.Models.Common;
+using Google.Api;
+using RabbitMq.Shared.Messaging;
+using RabbitMq.Shared.HealthCheck;
 namespace CommonService.API.Registrars
 {
     public class MvcRegistrar : IWebApplicationBuilderRegistrar
@@ -79,8 +82,21 @@ namespace CommonService.API.Registrars
 
 
             //}));
+
+
+           // builder.Services.AddKafkaMessageBus();
+
+            //builder.Services.AddKafkaProducer<string, User>(p =>
+            //{
+            //    p.Topic = "users";
+            //    p.BootstrapServers = "localhost:9092";
+            //});
+
             builder.Services.AddSignalR();
             builder.Services.AddHangfireServer();
+
+         
+
             builder.Services.Configure<KestrelServerOptions>(Options =>
             {
                 Options.AllowSynchronousIO = true;

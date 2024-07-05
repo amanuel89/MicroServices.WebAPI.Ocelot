@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.CompilerServices;
 
-[Table("Common.OrganizationBankAccount")]
+[Table("OrganizationBankAccount", Schema = "Common")]
 public class OrganizationBankAccount : BaseEntity
 {
     public long? OrganizationId { get; set; }

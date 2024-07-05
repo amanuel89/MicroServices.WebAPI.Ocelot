@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.Currency")]
+    [Table("Currency", Schema = "Common")]
     public class Currency : BaseEntity
     {
         public long? CountryId { get; private set; }
@@ -31,6 +31,22 @@ namespace CommonService.Domain.Models
                 Abbreviation = abbreviation,
                 IsDefault = isDefault,
             };
+        }
+
+        public void Update(
+          long? country,
+          string description,
+          string sign,
+          string abbreviation,
+          bool? isDefault)
+        {
+
+            CountryId = country;
+            Description = description;
+            Sign = sign;
+            Abbreviation = abbreviation;
+            IsDefault = isDefault;
+            
         }
     }
 }

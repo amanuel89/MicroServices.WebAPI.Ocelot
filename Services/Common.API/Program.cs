@@ -6,6 +6,11 @@ using OpenTelemetry.Exporter;
 using App.Metrics.AspNetCore;
 using App.Metrics.Formatters.Prometheus;
 using Hangfire.Logging;
+using RabbitMq.Shared.Messaging;
+using RabbitMq.Shared.HealthCheck;
+using Google.Api;
+using Common.Application.Messaging;
+using Common.Application.Messaging.Listener;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +34,10 @@ builder.Host.UseMetricsWebTracking().UseMetrics(options =>
     logging.ClearProviders();
     logging.AddConsole();
 });
-//builder.Host.UseSerilog();
+builder.Services.AddServiceHealthCheck();
+
+builder.Services.Configure<RabbitMqConfiguration>(options => builder.Configuration.GetSection("RabbitMq").Bind(options));
+builder.Services.AddHostedService<ConsigneDeletedListener>();
 
 builder.RegisterServices(typeof(Program));
 

@@ -1,4 +1,7 @@
 ﻿
+using RabbitMq.Shared.HealthCheck;
+using RabbitMq.Shared.Messaging;
+
 namespace CommonService.API.Registrars
 {
     public class SwaggerRegistrar : IWebApplicationBuilderRegistrar
@@ -7,6 +10,7 @@ namespace CommonService.API.Registrars
         {
             builder.Services.AddSwaggerGen();
             builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+        
         }
     }
 }

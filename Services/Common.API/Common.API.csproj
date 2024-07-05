@@ -19,6 +19,7 @@
     <PackageReference Include="App.Metrics.Formatters.Prometheus" Version="4.3.0" />
     <PackageReference Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.0.0" />
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Confluent.Kafka" Version="2.4.0" />
     <PackageReference Include="Dynatrace.OpenTelemetry.Instrumentation.AzureFunctions" Version="1.289.1" />
     <PackageReference Include="Hangfire" Version="1.8.11" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.8.11" />
@@ -53,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common.Application\Common.Application.csproj" />
+    <ProjectReference Include="C:\Users\et\source\repos\RabbitMq\RabbitMq.Core\RabbitMq.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />

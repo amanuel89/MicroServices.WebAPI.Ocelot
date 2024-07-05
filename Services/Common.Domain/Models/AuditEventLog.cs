@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models;
-[Table("Common.AuditEventLog")]
+[Table("AuditEventLog", Schema = "Common")]
 public class AuditEventLog
 {
     public long Id { get; set; }

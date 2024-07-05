@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.Languge")]
+    [Table("Languge", Schema = "Common")]
     public class Languge : BaseEntity
     {
         [MaxLength(100)]

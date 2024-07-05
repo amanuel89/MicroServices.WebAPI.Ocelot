@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.SystemConfiguration")]
+[Table("SystemConfiguration", Schema = "Common")]
 public class SystemConfiguration : BaseEntity
 {
     [MaxLength(100)]

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.Country")]
+    [Table("Country", Schema = "Common")]
     public class Country : BaseEntity
     {
         [MaxLength(100)]

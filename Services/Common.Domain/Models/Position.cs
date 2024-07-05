@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.Position")]
+    [Table("Position", Schema = "Common")]
     public class Position : BaseEntity
     { 
         [MaxLength(100)]

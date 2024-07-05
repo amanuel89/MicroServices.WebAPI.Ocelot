@@ -16,6 +16,8 @@ using App.Metrics.Formatters.Json;
 using Prometheus;
 using Common.Application.Models.Common;
 using ConsigneeService.Infrastructure.Configurations;
+using RabbitMq.Shared.Messaging;
+using RabbitMq.Shared.HealthCheck;
 namespace ConsigneeService.API.Registrars
 {
     public class MvcRegistrar : IWebApplicationBuilderRegistrar
@@ -85,7 +87,7 @@ namespace ConsigneeService.API.Registrars
             {
                 Options.AllowSynchronousIO = true;
             });
-            //builder.Services.AddMetrics();
+        
             builder.Services.AddOpenTelemetry()
                .WithTracing(builder =>
                {

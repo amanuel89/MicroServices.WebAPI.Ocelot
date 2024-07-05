@@ -8,6 +8,9 @@ using CommonService.Infrastructure.HttpServices;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using Common.Application.Commands.CountryCommand;
+using Common.Application.Messaging;
+using RabbitMq.Shared.Messaging;
+using RabbitMq.Shared.HealthCheck;
 
 namespace CommonService.API.Registrars
 {
@@ -15,11 +18,11 @@ namespace CommonService.API.Registrars
     {
         public void RegisterServices(WebApplicationBuilder builder)
         {
-     
             builder.Services.AddSession(options =>
             {
                 options.IOTimeout = TimeSpan.FromMinutes(10);
             });
+
             builder.WebHost.ConfigureKestrel(k =>
             {
                 k.Limits.MaxRequestHeadersTotalSize = 64 * 1024;
@@ -29,7 +32,7 @@ namespace CommonService.API.Registrars
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateCountry>());
             builder.Services.AddAutoMapper(typeof(Program), typeof(CreateCountry));
         
-            // application layer DI  
+            // Application layer DI
             builder.Services.AddScoped<IHttpService, HttpService>();
             builder.Services.AddHttpClient<IIdentityService, IdentityService>();
             builder.Services.AddScoped<IIdentityService, IdentityService>();

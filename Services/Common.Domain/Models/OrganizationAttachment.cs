@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.OrganizationAttachment")]
+[Table("OrganizationAttachment", Schema = "Common")]
 public class OrganizationAttachment : BaseEntity
 {
     public long TypeId { get; set; } //systemlookup

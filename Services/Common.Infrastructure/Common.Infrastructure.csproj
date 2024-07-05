@@ -24,5 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common.Domain\Common.Domain.csproj" />
+    <ProjectReference Include="C:\Users\et\source\repos\RabbitMq\RabbitMq.Core\RabbitMq.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.Tax")]
+[Table("Tax", Schema = "Common")]
 public class Tax : BaseEntity
 {
     [MaxLength(26)]

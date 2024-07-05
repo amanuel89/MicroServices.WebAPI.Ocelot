@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.HolidayDefinition")]
+    [Table("HolidayDefinition", Schema = "Common")]
     public class HolidayDefinition : BaseEntity
     {
         [MaxLength(150)]

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-[Table("Common.ObjectType")]
+[Table("ObjectType", Schema = "Common")]
 public class ObjectType : BaseEntity
 {
     [MaxLength(100)]
@@ -14,7 +14,7 @@ public class ObjectType : BaseEntity
     public bool IsLineItemObject { get; set; }
     public bool IsJournalObject { get; set; }
     public int JournalTypeId { get; set; } //systemlookup
-    public int JournalAlgorithmid { get; set; } //systemlookup
+    public int JournalAlgorithmId { get; set; } //systemlookup
     public long Parent { get; set; }
     public int? Index { get; set; }
     public virtual SystemLookup SubSystem { get; set; }

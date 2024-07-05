@@ -2,6 +2,10 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
+using Common.Application.Messaging;
+using RabbitMq.Shared.Messaging;
+using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
 namespace Common.Application.Commands.CountryCommand
 {
@@ -13,10 +17,12 @@ namespace Common.Application.Commands.CountryCommand
     public class DeleteCountryHandler : IRequestHandler<DeleteCountry, OperationResult<bool>>
     {
         private readonly IRepositoryBase<Country> _countryRepository;
-
-        public DeleteCountryHandler(IRepositoryBase<Country> countryRepository) =>
+        private readonly CountryDeletedMessagePublisher _deletedMessagePublisher;
+        public DeleteCountryHandler(IOptions<RabbitMqConfiguration> rabbitMq,IRepositoryBase<Country> countryRepository)
+        {
             _countryRepository = countryRepository;
-
+            _deletedMessagePublisher = new CountryDeletedMessagePublisher(rabbitMq);
+        }
         public async Task<OperationResult<bool>> Handle(DeleteCountry request, CancellationToken cancellationToken)
         {
             var result = new OperationResult<bool>();
@@ -33,6 +39,7 @@ namespace Common.Application.Commands.CountryCommand
             {
                 result.Payload = true;
                 result.Message = "The Record is Deleted Successfully";
+                await _deletedMessagePublisher.Send(country);
             }
             else
             {

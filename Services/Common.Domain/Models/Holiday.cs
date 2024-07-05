@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CommonService.Domain.Models
 {
-    [Table("Common.Holiday")]
+    [Table("Holiday", Schema = "Common")]
     public class Holiday : BaseEntity
     {
         public long? HolidayDefinitionId { get; private set; }
